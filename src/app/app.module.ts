@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { HostnameDetailsComponent } from './hostname-details/hostname-details.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HostnameDetailsComponent
   ],
   imports: [
     BrowserModule

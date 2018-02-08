@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+        <div class="col-md-3">
+          <label class="pull-left">Hostname:</label>
+        </div>
+        <div class="col-md-3">
+            <label class="pull-left">Loopback:</label>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="">
+          <div class="col-md-3 pu">
+            <input class="pull-left" type="text" name="hostname" id="hostname"/>
+          </div>
+          <div class="col-md-3">
+              <input class="pull-left" type="text" name="loopback" id="loopback"/>
+          </div>
+          <div class="col-md-2">
+              <button class="btn btn-primary pull-left"  name="loopback" id="loopback">ADD</button>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-6 pull-left">
+      <table class="table ">
+          <thead>
+            <tr>
+              <th style = "text-align:center">SR NO</th>
+              <th style = "text-align:center">Hostname</th>
+              <th style = "text-align:center">Loopback</th>
+              <th style = "text-align:center">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td style = "text-align:center">John</td>
+                <td style = "text-align:center">Doe</td>
+                <td style = "text-align:center">john@example.com</td>
+                <td>
+                  <a data-toggle="modal" data-target="#editInterface" ><i class="fa fa-edit"></i></a>
+                  <a data-toggle="modal" data-target="#viewInterface" ><i class="fa fa-eye"></i></a>
+                  <a data-toggle="modal" data-target="#trashInterface" ><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+
+  </div>
+</div>
+
+<div class="modal fade" id="editInterface" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content animated fadeIn">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Edit Interface</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="">
+                        <div class="col-md-3">
+                          <label class="pull-left">Interface:</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="pull-left">IP:</label>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="">
+                          <div class="col-md-3">
+                            <input class="pull-left" type="text" name="hostname" id="hostname"/>
+                          </div>
+                          <div class="col-md-3">
+                              <input class="pull-left" type="text" name="loopback" id="loopback"/>
+                          </div>
+                          <div class="col-md-2">
+                              <button class="btn btn-primary pull-left"  name="loopback" id="loopback">ADD</button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-12">
+                      <table class="table">
+                          <thead>
+                            <tr>
+                              <th style = "text-align:center">SR NO</th>
+                              <th style = "text-align:center">INTERFACE</th>
+                              <th style = "text-align:center">IP</th>
+                              <th style = "text-align:center">ACTION</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                <td style = "text-align:center">John</td>
+                                <td style = "text-align:center">Doe</td>
+                                <td style = "text-align:center">john@example.com</td>
+                                <td>
+                                  <a data-toggle="modal" data-target="#editInterface" ><i class="fa fa-edit"></i></a>
+                                  <a data-toggle="modal" data-target="#viewInterface" ><i class="fa fa-eye"></i></a>
+                                  <a data-toggle="modal" data-target="#trashInterface" ><i class="fa fa-trash"></i></a>
+                                </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                   </div>
+               </div>
+            
+              <div class="modal-footer" style="border-top:0">
+                  <button type="submit" class="btn btn-primary" >Save</button>
+                  <!-- <button type="submit" class="btn btn-primary" >Update</button> -->
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+        </div>
+    </div>
+</div>
