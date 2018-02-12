@@ -22,7 +22,7 @@
           </div>
       </div>
   </div>
-  <div class="col-md-6 pull-left">
+  <div class="col-md-6 pull-left" >
       <table class="table ">
           <thead>
             <tr>
@@ -33,14 +33,14 @@
             </tr>
           </thead>
           <tbody>
-              <tr>
-                <td style = "text-align:center">John</td>
-                <td style = "text-align:center">Doe</td>
-                <td style = "text-align:center">john@example.com</td>
+              <tr *ngFor="let user of username">
+                <td style = "text-align:center">{{user.id}}</td>
+                <td style = "text-align:center">{{user.hostname}}</td>
+                <td style = "text-align:center">{{user.loopback}}</td>
                 <td>
-                  <a data-toggle="modal" data-target="#editInterface" ><i class="fa fa-edit"></i></a>
-                  <a data-toggle="modal" data-target="#viewInterface" ><i class="fa fa-eye"></i></a>
-                  <a data-toggle="modal" data-target="#trashInterface" ><i class="fa fa-trash"></i></a>
+                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editInterface" ><i class="fa fa-edit"></i></button>
+                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#viewInterface" ><i class="fa fa-eye"></i></button>
+                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#trashInterface" ><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
             </tbody>
@@ -96,9 +96,9 @@
                                 <td style = "text-align:center">Doe</td>
                                 <td style = "text-align:center">john@example.com</td>
                                 <td>
-                                  <a data-toggle="modal" data-target="#editInterface" ><i class="fa fa-edit"></i></a>
-                                  <a data-toggle="modal" data-target="#viewInterface" ><i class="fa fa-eye"></i></a>
-                                  <a data-toggle="modal" data-target="#trashInterface" ><i class="fa fa-trash"></i></a>
+                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editInterface" ><i class="fa fa-edit"></i></button>
+                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#viewInterface" ><i class="fa fa-eye"></i></button>
+                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#trashInterface" ><i class="fa fa-trash"></i></button>
                                 </td>
                               </tr>
                             </tbody>
