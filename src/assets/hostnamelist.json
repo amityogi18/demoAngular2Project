@@ -3,12 +3,38 @@
         {
             "id"       : 1,
             "hostname" : "www.infinitylabs.in",
-            "loopback" : "192.168.0.1"
+            "loopback" : "192.168.0.1",
+            "arr"      : [
+                {
+                    "sno"       : 1,
+                    "interface" : "INF1-LAB-RTR-001 ",
+                    "ip"        : "192.168.0.1"
+                },
+                {
+                    "sno"       : 2,
+                    "interface" : "INF1-LAB-RTR-002 ",
+                    "ip"        : "192.168.0.2"
+
+                }
+            ] 
         },
         {
             "id"       : 2 ,
             "hostname" : "www.mightycoders.in",
-            "loopback" : "192.168.0.2"
+            "loopback" : "192.168.0.2",
+             "arr"      : [
+                {
+                    "sno"       : 1,
+                    "interface" : "INF1-LAB-RTR-001 ",
+                    "ip"        : "192.168.0.1"
+                },
+                {
+                    "sno"       : 2,
+                    "interface" : "INF1-LAB-RTR-002 ",
+                    "ip"        : "192.168.0.2"
+
+                }
+            ]
         }
     ]
 }

@@ -11,14 +11,15 @@
   </div>
   <div class="row">
       <div class="">
-          <div class="col-md-3 pu">
+          <div class="col-md-3">
             <input class="pull-left" type="text" name="hostname" id="hostname" [(ngModel)] = "model.hostname"/>
           </div>
           <div class="col-md-3">
               <input class="pull-left" type="text" name="loopback" id="loopback" [(ngModel)] = "model.loopback"/>
           </div>
           <div class="col-md-2">
-              <button class="btn btn-primary pull-left"  name="add" id="add" (click)= "addHostName()">ADD</button>
+              <button class="btn btn-primary pull-left"  id="add" *ngIf="mode==='add'"  (click)= "addHostName()">ADD</button>
+              <button class="btn btn-primary pull-left"  id="edit" *ngIf="mode==='edit'" (click)= "editHostName()">EDIT</button>
           </div>
       </div>
   </div>
@@ -30,6 +31,7 @@
               <th style = "text-align:center">Hostname</th>
               <th style = "text-align:center">Loopback</th>
               <th style = "text-align:center">ACTION</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -38,18 +40,18 @@
                 <td style = "text-align:center">{{user.hostname}}</td>
                 <td style = "text-align:center">{{user.loopback}}</td>
                 <td>
-                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editInterface" ><i class="fa fa-edit"></i></button>
-                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#viewInterface" ><i class="fa fa-eye"></i></button>
-                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#trashInterface" ><i class="fa fa-trash"></i></button>
+                  <button class="btn btn-primary btn-xs" (click)='onEditClick(user)' ><i class="fa fa-edit"></i></button>
+                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#viewInterface" (click)='viewHostName(user)' ><i class="fa fa-eye"></i></button>
+                  <button class="btn btn-primary btn-xs" (click)='deleteHostName(user)' ><i class="fa fa-trash"></i></button>
                 </td>
+                
               </tr>
             </tbody>
         </table>
-
-  </div>
+    </div>
 </div>
 
-<div class="modal fade" id="editInterface" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="viewInterface" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content animated fadeIn">
             <div class="modal-header">
@@ -90,15 +92,14 @@
                               <th style = "text-align:center">ACTION</th>
                             </tr>
                           </thead>
-                          <tbody>
-                              <tr>
-                                <td style = "text-align:center">John</td>
-                                <td style = "text-align:center">Doe</td>
-                                <td style = "text-align:center">john@example.com</td>
+                          <tbody *ngFor="let abc of username">
+                              <tr *ngFor="let xyz of abc.arr">
+                                <td style = "text-align:center">{{xyz.sno}}</td>
+                                <td style = "text-align:center">{{xyz.interface}}</td>
+                                <td style = "text-align:center">{{xyz.ip}}</td>
                                 <td>
-                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editInterface" ><i class="fa fa-edit"></i></button>
-                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#viewInterface" ><i class="fa fa-eye"></i></button>
-                                  <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#trashInterface" ><i class="fa fa-trash"></i></button>
+                                  <button class="btn btn-primary btn-xs" ><i class="fa fa-edit"></i></button>
+                                  <button class="btn btn-primary btn-xs" ><i class="fa fa-trash"></i></button>
                                 </td>
                               </tr>
                             </tbody>

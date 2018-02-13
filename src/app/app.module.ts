@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HostnameDetailsComponent } from './hostname-details/hostname-details.component';
 import { UtilityService } from './uitility-service/utility.service';
-
+import _ from 'lodash';
 
 
 @NgModule({
@@ -16,8 +16,8 @@ import { UtilityService } from './uitility-service/utility.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
-  ],
+    FormsModule,
+    ],
   providers: [UtilityService, ],
   bootstrap: [AppComponent]
 })
