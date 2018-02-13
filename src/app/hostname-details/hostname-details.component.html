@@ -12,13 +12,13 @@
   <div class="row">
       <div class="">
           <div class="col-md-3 pu">
-            <input class="pull-left" type="text" name="hostname" id="hostname"/>
+            <input class="pull-left" type="text" name="hostname" id="hostname" [(ngModel)] = "model.hostname"/>
           </div>
           <div class="col-md-3">
-              <input class="pull-left" type="text" name="loopback" id="loopback"/>
+              <input class="pull-left" type="text" name="loopback" id="loopback" [(ngModel)] = "model.loopback"/>
           </div>
           <div class="col-md-2">
-              <button class="btn btn-primary pull-left"  name="loopback" id="loopback">ADD</button>
+              <button class="btn btn-primary pull-left"  name="add" id="add" (click)= "addHostName()">ADD</button>
           </div>
       </div>
   </div>

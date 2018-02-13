@@ -12,6 +12,10 @@ export class HostnameDetailsComponent implements OnInit {
 
   constructor(public utility: UtilityService) {
   this.showGetHostName();
+  this.model = {
+    hostname:'',
+    loopback:''
+    }
   }
 
   ngOnInit() {
@@ -19,8 +23,12 @@ export class HostnameDetailsComponent implements OnInit {
 
   showGetHostName() {
     this.utility.getHostName().subscribe(
-      data => {
-      this.username = data.data;
+      response => {
+      if(localStorage.getItem('listHostname') == '' || localStorage.getItem('listHostname') == undefined){
+        localStorage.setItem('listHostname',JSON.stringify(response.data));
+      } 
+      this.username = JSON.parse(localStorage.getItem('listHostname'));       
+      
      },
       error => this.handleError(error)
     );
@@ -30,6 +38,16 @@ export class HostnameDetailsComponent implements OnInit {
     console.log(error);
   }
 
+  public addHostName() {
+    this.model.id = this.username.length+1;
+    this.username.push(this.model);
+    this.model =  {
+      hostname:'',
+      loopback:''
+    }
+      localStorage.setItem('listHostname', JSON.stringify(this.username));
+      console.log(this.username);
+  }
 
 
 }
