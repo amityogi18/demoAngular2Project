@@ -92,8 +92,8 @@
                               <th style = "text-align:center">ACTION</th>
                             </tr>
                           </thead>
-                          <tbody *ngFor="let abc of username">
-                              <tr *ngFor="let xyz of abc.arr">
+                          <tbody>
+                              <tr *ngFor="let xyz of interfaceData">
                                 <td style = "text-align:center">{{xyz.sno}}</td>
                                 <td style = "text-align:center">{{xyz.interface}}</td>
                                 <td style = "text-align:center">{{xyz.ip}}</td>

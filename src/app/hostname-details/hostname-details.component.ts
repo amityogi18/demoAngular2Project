@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilityService } from '../uitility-service/utility.service';
-import _ from 'lodash';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -13,6 +13,7 @@ export class HostnameDetailsComponent implements OnInit {
   model;
   newModel;
   mode;
+  interfaceData;
   constructor(public utility: UtilityService) {
   this.showGetHostName();
   this.model = {
@@ -34,8 +35,8 @@ export class HostnameDetailsComponent implements OnInit {
   }
 
   processData(data) {
-    debugger;
-    if (localStorage.getItem('listHostname') == '' || localStorage.getItem('listHostname') == undefined) {
+    if (_.isEmpty(localStorage.getItem('listHostname'))) {
+  //  if (localStorage.getItem('listHostname') == '' || localStorage.getItem('listHostname') == undefined) {
       localStorage.setItem('listHostname', JSON.stringify(data.data));
     }
     this.username = JSON.parse(localStorage.getItem('listHostname'));
@@ -84,8 +85,10 @@ export class HostnameDetailsComponent implements OnInit {
   }
 
   viewHostName(viewData) {
-    console.log(viewData);
-
+    if (localStorage.getItem('listInterface') == '' || localStorage.getItem('listInterface') == undefined) {
+    localStorage.setItem('listInterface', JSON.stringify(viewData.arr));
+    }
+    this.interfaceData = JSON.parse(localStorage.getItem('listInterface'));
   }
 
 

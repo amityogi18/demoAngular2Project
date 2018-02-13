@@ -25,12 +25,12 @@
              "arr"      : [
                 {
                     "sno"       : 1,
-                    "interface" : "INF1-LAB-RTR-001 ",
+                    "interface" : "MIG1-LAB-RTR-001 ",
                     "ip"        : "192.168.0.1"
                 },
                 {
                     "sno"       : 2,
-                    "interface" : "INF1-LAB-RTR-002 ",
+                    "interface" : "MIG2-LAB-RTR-002 ",
                     "ip"        : "192.168.0.2"
 
                 }
