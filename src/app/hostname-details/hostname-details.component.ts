@@ -13,14 +13,18 @@ export class HostnameDetailsComponent implements OnInit {
   model;
   newModel;
   mode;
-  interfaceData;
-  constructor(public utility: UtilityService) {
+  selectedObject;
+   constructor(public utility: UtilityService) {
   this.showGetHostName();
   this.model = {
     hostname: '',
     loopback: '',
-    arr: []
     };
+    this.newModel = {
+      interface: '',
+      ip: ''
+    };
+    this.selectedObject = {};
     this.mode = 'add';
   }
 
@@ -59,7 +63,7 @@ export class HostnameDetailsComponent implements OnInit {
 
   editHostName() {
     this.username[this.model.id - 1] = this.model;
-    console.log('updated data', this.username[this.model.id - 1]);
+   // console.log('updated data', this.username[this.model.id - 1]);
     localStorage.setItem('listHostname', JSON.stringify(this.username));
     this.model =  {
       hostname: '',
@@ -72,24 +76,45 @@ export class HostnameDetailsComponent implements OnInit {
     this.mode = 'edit';
     console.log(editData);
     this.model = editData;
-    // this.addHostName();
-    console.log( 'this.model----------->' + this.model);
   }
 
 
   deleteHostName(value) {
-    // tslint:disable-next-line:no-debugger
-    debugger;
     this.username.splice((value.id - 1), 1);
     localStorage.setItem('listHostname', JSON.stringify(this.username));
   }
 
   viewHostName(viewData) {
-    if (localStorage.getItem('listInterface') == '' || localStorage.getItem('listInterface') == undefined) {
-    localStorage.setItem('listInterface', JSON.stringify(viewData.arr));
-    }
-    this.interfaceData = JSON.parse(localStorage.getItem('listInterface'));
+     this.selectedObject = viewData;
   }
 
+  addInterface() {
+    this.newModel.sno = this.selectedObject.arr.length + 1;
+    this.selectedObject.arr.push(this.newModel);
+    this.username[this.selectedObject.id -1] = this.selectedObject;
+    this.newModel = {
+      interface: '',
+      ip: ''
+    };
+    localStorage.setItem('listHostname', JSON.stringify(this.username));
+  }
+
+  editInterface() {
+    this.selectedObject.arr[this.newModel.sno - 1] = this.newModel;
+    this.username[this.selectedObject.id - 1] = this.selectedObject;
+    localStorage.setItem('listHostname', JSON.stringify(this.username));
+    this.newModel = {
+      interface: '',
+      ip: ''
+    };
+    this.mode = 'add';
+
+  }
+
+  onEditInterface(editValue) {
+    this.mode = 'edit';
+    this.newModel = editValue;
+
+  }
 
 }

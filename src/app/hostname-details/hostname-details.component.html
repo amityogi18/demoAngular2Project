@@ -12,10 +12,10 @@
   <div class="row">
       <div class="">
           <div class="col-md-3">
-            <input class="pull-left" type="text" name="hostname" id="hostname" [(ngModel)] = "model.hostname"/>
+            <input class="pull-left" type="text"  id="hostname" [(ngModel)] = "model.hostname"/>
           </div>
           <div class="col-md-3">
-              <input class="pull-left" type="text" name="loopback" id="loopback" [(ngModel)] = "model.loopback"/>
+              <input class="pull-left" type="text" id="loopback" [(ngModel)] = "model.loopback"/>
           </div>
           <div class="col-md-2">
               <button class="btn btn-primary pull-left"  id="add" *ngIf="mode==='add'"  (click)= "addHostName()">ADD</button>
@@ -72,13 +72,14 @@
                   <div class="row">
                       <div class="">
                           <div class="col-md-3">
-                            <input class="pull-left" type="text" name="hostname" id="hostname"/>
+                            <input class="pull-left" type="text" id="interface" [(ngModel)]='newModel.interface'/>
                           </div>
                           <div class="col-md-3">
-                              <input class="pull-left" type="text" name="loopback" id="loopback"/>
+                              <input class="pull-left" type="text" id="ip" [(ngModel)]='newModel.ip'/>
                           </div>
                           <div class="col-md-2">
-                              <button class="btn btn-primary pull-left"  name="loopback" id="loopback">ADD</button>
+                              <button class="btn btn-primary pull-left" id="addInterface" *ngIf="mode ==='add'" (click)= "addInterface()">ADD</button>
+                              <button class="btn btn-primary pull-left" id="editInterface" *ngIf="mode === 'edit'" (click)= "editInterface()">EDIT</button>
                           </div>
                       </div>
                   </div>
@@ -92,14 +93,14 @@
                               <th style = "text-align:center">ACTION</th>
                             </tr>
                           </thead>
-                          <tbody>
-                              <tr *ngFor="let xyz of interfaceData">
-                                <td style = "text-align:center">{{xyz.sno}}</td>
-                                <td style = "text-align:center">{{xyz.interface}}</td>
-                                <td style = "text-align:center">{{xyz.ip}}</td>
+                          <tbody >
+                              <tr *ngFor="let interface of selectedObject.arr">
+                                <td style = "text-align:center">{{interface.sno}}</td>
+                                <td style = "text-align:center">{{interface.interface}}</td>
+                                <td style = "text-align:center">{{interface.ip}}</td>
                                 <td>
-                                  <button class="btn btn-primary btn-xs" ><i class="fa fa-edit"></i></button>
-                                  <button class="btn btn-primary btn-xs" ><i class="fa fa-trash"></i></button>
+                                  <button class="btn btn-primary btn-xs" (click)= "onEditInterface(interface)"><i class="fa fa-edit"></i></button>
+                                  <button class="btn btn-primary btn-xs" (click)= "onDeleteInterface(interface)"><i class="fa fa-trash"></i></button>
                                 </td>
                               </tr>
                             </tbody>
