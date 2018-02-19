@@ -24,7 +24,8 @@
       </div>
   </div>
   <div class="col-md-6 pull-left" >
-      <table class="table ">
+      <div [hidden]= "username.length !== 0"><span>No Records</span></div>
+      <table class="table" [hidden] = "username.length === 0">
           <thead>
             <tr>
               <th style = "text-align:center">SR NO</th>
@@ -35,14 +36,14 @@
             </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let user of username">
-                <td style = "text-align:center">{{user.id}}</td>
+              <tr *ngFor="let user of username; index as i" [attr.data-index]="i">
+                <td style = "text-align:center">{{i+1}}</td>
                 <td style = "text-align:center">{{user.hostname}}</td>
                 <td style = "text-align:center">{{user.loopback}}</td>
                 <td>
                   <button class="btn btn-primary btn-xs" (click)='onEditClick(user)' ><i class="fa fa-edit"></i></button>
                   <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#viewInterface" (click)='viewHostName(user)' ><i class="fa fa-eye"></i></button>
-                  <button class="btn btn-primary btn-xs" (click)='deleteHostName(user)' ><i class="fa fa-trash"></i></button>
+                  <button class="btn btn-primary btn-xs" (click)='deleteHostName(i)' ><i class="fa fa-trash"></i></button>
                 </td>
                 
               </tr>
@@ -84,6 +85,7 @@
                       </div>
                   </div>
                   <div class="col-md-12">
+                      <div></div>
                       <table class="table">
                           <thead>
                             <tr>
@@ -94,25 +96,19 @@
                             </tr>
                           </thead>
                           <tbody >
-                              <tr *ngFor="let interface of selectedObject.arr">
-                                <td style = "text-align:center">{{interface.sno}}</td>
+                              <tr *ngFor="let interface of selectedObject.arr; index as sno" [attr.data-index] = "sno">
+                                <td style = "text-align:center">{{sno + 1}}</td>
                                 <td style = "text-align:center">{{interface.interface}}</td>
                                 <td style = "text-align:center">{{interface.ip}}</td>
                                 <td>
                                   <button class="btn btn-primary btn-xs" (click)= "onEditInterface(interface)"><i class="fa fa-edit"></i></button>
-                                  <button class="btn btn-primary btn-xs" (click)= "onDeleteInterface(interface)"><i class="fa fa-trash"></i></button>
+                                  <button class="btn btn-primary btn-xs" (click)= 'onDeleteInterface(sno)'><i class="fa fa-trash"></i></button>
                                 </td>
                               </tr>
                             </tbody>
                         </table>
                    </div>
                </div>
-            
-              <div class="modal-footer" style="border-top:0">
-                  <button type="submit" class="btn btn-primary" >Save</button>
-                  <!-- <button type="submit" class="btn btn-primary" >Update</button> -->
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
         </div>
     </div>
 </div>
