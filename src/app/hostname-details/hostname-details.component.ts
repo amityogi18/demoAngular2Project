@@ -9,17 +9,19 @@ import * as _ from 'lodash';
   styleUrls: ['./hostname-details.component.css']
 })
 export class HostnameDetailsComponent implements OnInit {
-  username;
-  model;
-  newModel;
-  mode;
-  selectedObject;
+    username;
+    model;
+    newModel;
+    mode;
+    selectedObject;
   constructor(public utility: UtilityService) {
     this.showGetHostName();
     this.username = [];
     this.resetModel();
     this.resetNewModel();
-    this.selectedObject = {};
+    this.selectedObject = {
+      arr: []
+    };
     this.mode = 'add';
   }
 
@@ -39,7 +41,7 @@ export class HostnameDetailsComponent implements OnInit {
     };
   }
 
-  resetNewModel() {
+  resetNewModel(){
     this.newModel = {
       interface: '',
       ip: ''
@@ -80,7 +82,7 @@ export class HostnameDetailsComponent implements OnInit {
 
   onEditClick(editData) {
     this.mode = 'edit';
-    this.model = editData;
+    this.model = {...editData};
   }
 
 
@@ -94,6 +96,10 @@ export class HostnameDetailsComponent implements OnInit {
   }
 
   addInterface() {
+    debugger;
+    if(_.isEmpty(this.selectedObject.arr)){
+       this.selectedObject.arr = [];
+    }
     this.newModel.sno = this.selectedObject.arr.length + 1;
     this.selectedObject.arr.push(this.newModel);
     this.username[this.selectedObject.id - 1] = this.selectedObject;
@@ -111,7 +117,7 @@ export class HostnameDetailsComponent implements OnInit {
 
   onEditInterface(editValue) {
     this.mode = 'edit';
-    this.newModel = editValue;
+    this.newModel = _.cloneDeep(editValue);
   }
 
   onDeleteInterface(index: number) {
@@ -119,5 +125,4 @@ export class HostnameDetailsComponent implements OnInit {
     this.username[this.selectedObject.id - 1] = this.selectedObject;
     this.setLocalStorage(this.username);
   }
-
 }
